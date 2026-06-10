@@ -1,0 +1,10 @@
+# Working materials — NOT part of the deliverable.
+# docx_extracted/ contains the original profile with real company names and a
+# private email that were deliberately kept off the site. Do not publish.
+docx_extracted/
+stitch_extracted/
+
+# Local tooling / editor config
+.claude/
+.DS_Store
+*.log
