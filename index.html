@@ -35,6 +35,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
 
+  <!-- Apply saved theme before paint to avoid a flash -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
   <link rel="stylesheet" href="css/main.css" />
   <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'&gt;&lt;rect width='32' height='32' fill='%230a0a0a'/&gt;&lt;rect x='6' y='6' width='20' height='20' fill='none' stroke='%23d0291c' stroke-width='2'/&gt;&lt;rect x='13' y='13' width='6' height='6' fill='%23d0291c'/&gt;&lt;/svg&gt;" />
 </head>
@@ -61,6 +70,12 @@
           <li><a href="#engagement">ENGAGEMENT</a></li>
           <li><a class="btn btn-primary nav-cta" href="#contact">LET'S TALK</a></li>
         </ul>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" aria-pressed="false" title="Switch color theme">
+          <svg viewBox="0 0 18 18" width="17" height="17" aria-hidden="true">
+            <circle cx="9" cy="9" r="7" fill="none" stroke="currentColor" stroke-width="1.6" />
+            <path d="M9 2 A7 7 0 0 1 9 16 Z" fill="currentColor" />
+          </svg>
+        </button>
       </nav>
     </div>
   </header>

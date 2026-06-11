@@ -9,6 +9,32 @@
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
+  /* ---------- Theme toggle ----------
+     Dark (red) is the default. The inline <head> script applies any saved
+     theme before paint; here we keep the button state and theme-color in sync
+     and persist changes.
+  -------------------------------------------------------------- */
+  var root = document.documentElement;
+  var themeBtn = document.getElementById("theme-toggle");
+  var themeMeta = document.querySelector('meta[name="theme-color"]');
+
+  function setTheme(theme) {
+    var light = theme === "light";
+    root.setAttribute("data-theme", light ? "light" : "dark");
+    if (themeBtn) themeBtn.setAttribute("aria-pressed", String(light));
+    if (themeMeta) themeMeta.setAttribute("content", light ? "#e7e9ec" : "#0a0a0a");
+  }
+
+  setTheme(root.getAttribute("data-theme") === "light" ? "light" : "dark");
+
+  if (themeBtn) {
+    themeBtn.addEventListener("click", function () {
+      var next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+      setTheme(next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+    });
+  }
+
   /* ---------- Mobile nav toggle ---------- */
   var toggle = document.querySelector(".nav-toggle");
   var links = document.getElementById("nav-links");
